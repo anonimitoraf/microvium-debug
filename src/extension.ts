@@ -57,7 +57,7 @@ class MicroviumDebugSession extends LoggingDebugSession {
   private debugClientWebSocketOpen = new AwaitNotifySubject();
   // TODO | HIGH | Raf: Fix the code so this event emitter isn't needed
   private debuggerEventEmitter = new EventEmitter();
-  private debugClientWebSocket: typeof WebSocket; 
+  private debugClientWebSocket: WebSocket; 
 
   constructor() {
     super("microvium-debug.txt");
