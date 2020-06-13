@@ -66,7 +66,7 @@ class MicroviumDebugSession extends LoggingDebugSession {
     this.debuggerEventEmitter.on('from-app:stop-on-step', () => this.sendEvent(new StoppedEvent('step', threadId)));
     this.debuggerEventEmitter.on('from-app:stop-on-breakpoint', () => this.sendEvent(new StoppedEvent('breakpoint', threadId)));
 
-    this.debugClientWebSocket = new WebSocket('ws://localhost:8080', {});
+    this.debugClientWebSocket = new WebSocket('ws://localhost:10000', {});
     this.debugClientWebSocket.on('message', (messageStr: string) => {
       console.log('WS MESSAGE:', messageStr);
       const { type, data } = JSON.parse(messageStr);
