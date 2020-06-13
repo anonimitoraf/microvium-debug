@@ -194,7 +194,7 @@ class MicroviumDebugSession extends LoggingDebugSession {
     console.log('DEBUGGER: VARIABLES REQUEST', JSON.stringify(args.variablesReference));
     this.sendToVM({ type: 'from-debugger:variables-request', data: args.variablesReference });
     const variables = await new Promise<DebugProtocol.Variable[]>(resolve =>
-      this.debuggerEventEmitter.on('from-app:variables', resolve));
+      this.debuggerEventEmitter.once(`from-app:variables:ref:${args.variablesReference}`, resolve));
     response.body = { variables };
     this.sendResponse(response);
   }
